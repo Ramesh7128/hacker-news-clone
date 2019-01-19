@@ -1,5 +1,6 @@
 from django.db import models
 from .sentiment import calculate_sentiment
+from django.contrib import admin
 
 # Create your models here.
 class Story(models.Model):
@@ -9,7 +10,7 @@ class Story(models.Model):
     score = models.IntegerField(default=0)
     link = models.URLField()
     timestamp = models.IntegerField()
-    order_no = models.IntegerField(blank=True)
+    order_no = models.IntegerField(null=True, unique=True)
     sentiment_score = models.FloatField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
@@ -27,6 +28,7 @@ class Story(models.Model):
     class Meta:
         verbose_name_plural = "stories"
 
+    
     
 
     
