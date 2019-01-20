@@ -4,6 +4,6 @@ from .models import Story
 
 class StoryAdmin(admin.ModelAdmin):
     list_display=('title', 'sentiment_score')
-    search_fields = ('title', 'sentiment_score')
+    search_fields = ('title', 'sentiment_score', 'order_no')
 
 admin.site.register(Story, StoryAdmin)
