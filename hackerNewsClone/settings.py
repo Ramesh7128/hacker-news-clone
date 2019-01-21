@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # cors settings
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
        'localhost:3000',
@@ -44,10 +44,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'haystack',
     'rest_framework',
     'corsheaders',
     'top_articles',
 ]
+
+# # haystack settings
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
+
+HAYSTACK_CONNECTIONS = {
+ 'default': {   
+   'ENGINE':'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+   'URL': 'http://127.0.0.1:9200/',
+   'INDEX_NAME': 'haystack',
+  },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

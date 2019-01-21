@@ -1,0 +1,183 @@
+[2019-01-21 06:08:48,375][INFO ][node                     ] [Spider-Slayer] version[2.3.4], pid[32415], build[e455fd0/2016-06-30T11:24:31Z]
+[2019-01-21 06:08:48,377][INFO ][node                     ] [Spider-Slayer] initializing ...
+[2019-01-21 06:08:48,954][INFO ][plugins                  ] [Spider-Slayer] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2019-01-21 06:08:48,975][INFO ][env                      ] [Spider-Slayer] using [1] data paths, mounts [[/ (/dev/sda2)]], net usable_space [840.5gb], net total_space [909.6gb], spins? [possibly], types [ext4]
+[2019-01-21 06:08:48,975][INFO ][env                      ] [Spider-Slayer] heap size [990.7mb], compressed ordinary object pointers [true]
+[2019-01-21 06:08:48,975][WARN ][env                      ] [Spider-Slayer] max file descriptors [4096] for elasticsearch process likely too low, consider increasing to at least [65536]
+[2019-01-21 06:08:52,186][INFO ][node                     ] [Spider-Slayer] initialized
+[2019-01-21 06:08:52,186][INFO ][node                     ] [Spider-Slayer] starting ...
+[2019-01-21 06:08:52,437][INFO ][transport                ] [Spider-Slayer] publish_address {127.0.0.1:9301}, bound_addresses {[::1]:9301}, {127.0.0.1:9301}
+[2019-01-21 06:08:52,441][INFO ][discovery                ] [Spider-Slayer] elasticsearch/0162eQUPRI2NNsqrqBTbdQ
+[2019-01-21 06:08:53,342][WARN ][transport.netty          ] [Spider-Slayer] exception caught on transport layer [[id: 0x344153b1, /127.0.0.1:38406 => /127.0.0.1:9300]], closing connection
+java.lang.NullPointerException
+	at org.elasticsearch.transport.netty.MessageChannelHandler.handleException(MessageChannelHandler.java:207)
+	at org.elasticsearch.transport.netty.MessageChannelHandler.handlerResponseError(MessageChannelHandler.java:202)
+	at org.elasticsearch.transport.netty.MessageChannelHandler.messageReceived(MessageChannelHandler.java:136)
+	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70)
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:791)
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:296)
+	at org.jboss.netty.handler.codec.frame.FrameDecoder.unfoldAndFireMessageReceived(FrameDecoder.java:462)
+	at org.jboss.netty.handler.codec.frame.FrameDecoder.callDecode(FrameDecoder.java:443)
+	at org.jboss.netty.handler.codec.frame.FrameDecoder.messageReceived(FrameDecoder.java:303)
+	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70)
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:559)
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:268)
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:255)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:88)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2019-01-21 06:08:53,342][WARN ][transport.netty          ] [Spider-Slayer] exception caught on transport layer [[id: 0x5481070c, /0:0:0:0:0:0:0:1:43888 => /0:0:0:0:0:0:0:1:9300]], closing connection
+java.lang.NullPointerException
+	at org.elasticsearch.transport.netty.MessageChannelHandler.handleException(MessageChannelHandler.java:207)
+	at org.elasticsearch.transport.netty.MessageChannelHandler.handlerResponseError(MessageChannelHandler.java:202)
+	at org.elasticsearch.transport.netty.MessageChannelHandler.messageReceived(MessageChannelHandler.java:136)
+	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70)
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:791)
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:296)
+	at org.jboss.netty.handler.codec.frame.FrameDecoder.unfoldAndFireMessageReceived(FrameDecoder.java:462)
+	at org.jboss.netty.handler.codec.frame.FrameDecoder.callDecode(FrameDecoder.java:443)
+	at org.jboss.netty.handler.codec.frame.FrameDecoder.messageReceived(FrameDecoder.java:303)
+	at org.jboss.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70)
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.jboss.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:559)
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:268)
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:255)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:88)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2019-01-21 06:08:53,631][INFO ][node                     ] [Spider-Slayer] stopping ...
+[2019-01-21 06:08:53,640][INFO ][node                     ] [Spider-Slayer] stopped
+[2019-01-21 06:08:53,644][INFO ][node                     ] [Spider-Slayer] closing ...
+[2019-01-21 06:08:53,652][INFO ][node                     ] [Spider-Slayer] closed
+[2019-01-21 07:06:50,186][INFO ][node                     ] [Arsenal] version[2.3.4], pid[4798], build[e455fd0/2016-06-30T11:24:31Z]
+[2019-01-21 07:06:50,191][INFO ][node                     ] [Arsenal] initializing ...
+[2019-01-21 07:06:50,748][INFO ][plugins                  ] [Arsenal] modules [reindex, lang-expression, lang-groovy], plugins [], sites []
+[2019-01-21 07:06:50,771][INFO ][env                      ] [Arsenal] using [1] data paths, mounts [[/ (/dev/sda2)]], net usable_space [840.5gb], net total_space [909.6gb], spins? [possibly], types [ext4]
+[2019-01-21 07:06:50,772][INFO ][env                      ] [Arsenal] heap size [990.7mb], compressed ordinary object pointers [true]
+[2019-01-21 07:06:50,772][WARN ][env                      ] [Arsenal] max file descriptors [4096] for elasticsearch process likely too low, consider increasing to at least [65536]
+[2019-01-21 07:06:52,591][INFO ][node                     ] [Arsenal] initialized
+[2019-01-21 07:06:52,591][INFO ][node                     ] [Arsenal] starting ...
+[2019-01-21 07:06:52,717][INFO ][transport                ] [Arsenal] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2019-01-21 07:06:52,721][INFO ][discovery                ] [Arsenal] elasticsearch/k7sK7AbzT724xutncVcdcQ
+[2019-01-21 07:06:55,795][INFO ][cluster.service          ] [Arsenal] new_master {Arsenal}{k7sK7AbzT724xutncVcdcQ}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-join(elected_as_master, [0] joins received)
+[2019-01-21 07:06:55,859][INFO ][http                     ] [Arsenal] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2019-01-21 07:06:55,859][INFO ][node                     ] [Arsenal] started
+[2019-01-21 07:06:56,389][INFO ][gateway                  ] [Arsenal] recovered [1] indices into cluster_state
+[2019-01-21 07:06:57,600][INFO ][cluster.routing.allocation] [Arsenal] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][0]] ...]).
+[2019-01-21 07:08:28,640][INFO ][cluster.metadata         ] [Arsenal] [haystack] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2019-01-21 07:08:28,950][INFO ][cluster.metadata         ] [Arsenal] [haystack] create_mapping [modelresult]
+[2019-01-21 07:08:29,780][INFO ][cluster.routing.allocation] [Arsenal] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][4]] ...]).
+[2019-01-21 07:12:38,336][INFO ][cluster.metadata         ] [Arsenal] [haystack] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2019-01-21 07:12:38,523][INFO ][cluster.metadata         ] [Arsenal] [haystack] create_mapping [modelresult]
+[2019-01-21 07:12:38,723][DEBUG][action.search            ] [Arsenal] All shards failed for phase: [query]
+RemoteTransportException[[Arsenal][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][3]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1035)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:848)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:643)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:620)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:371)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:75)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:376)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2019-01-21 07:12:38,725][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:855)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:833)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:387)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2019-01-21 07:12:38,728][DEBUG][action.search            ] [Arsenal] All shards failed for phase: [query]
+RemoteTransportException[[Arsenal][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][1]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1035)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:848)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:643)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:620)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:371)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:75)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:376)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2019-01-21 07:12:38,728][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:855)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:833)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:387)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2019-01-21 07:12:38,736][DEBUG][action.search            ] [Arsenal] All shards failed for phase: [query]
+RemoteTransportException[[Arsenal][127.0.0.1:9300][indices:data/read/search[phase/query]]]; nested: IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]];
+Caused by: [haystack][[haystack][2]] IllegalIndexShardStateException[CurrentState[RECOVERING] operations only allowed when shard state is one of [POST_RECOVERY, STARTED, RELOCATED]]
+	at org.elasticsearch.index.shard.IndexShard.readAllowed(IndexShard.java:1035)
+	at org.elasticsearch.index.shard.IndexShard.acquireSearcher(IndexShard.java:848)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:643)
+	at org.elasticsearch.search.SearchService.createAndPutContext(SearchService.java:620)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:371)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:368)
+	at org.elasticsearch.search.action.SearchServiceTransportAction$SearchQueryTransportHandler.messageReceived(SearchServiceTransportAction.java:365)
+	at org.elasticsearch.transport.TransportRequestHandler.messageReceived(TransportRequestHandler.java:33)
+	at org.elasticsearch.transport.RequestHandlerRegistry.processMessageReceived(RequestHandlerRegistry.java:75)
+	at org.elasticsearch.transport.TransportService$4.doRun(TransportService.java:376)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:37)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2019-01-21 07:12:38,737][WARN ][rest.suppressed          ] path: /haystack/modelresult/_search, params: {index=haystack, _source=true, type=modelresult}
+Failed to execute phase [query], all shards failed
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction.onFirstPhaseResult(AbstractSearchAsyncAction.java:206)
+	at org.elasticsearch.action.search.AbstractSearchAsyncAction$1.onFailure(AbstractSearchAsyncAction.java:152)
+	at org.elasticsearch.action.ActionListenerResponseHandler.handleException(ActionListenerResponseHandler.java:46)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.processException(TransportService.java:855)
+	at org.elasticsearch.transport.TransportService$DirectResponseChannel.sendResponse(TransportService.java:833)
+	at org.elasticsearch.transport.TransportService$4.onFailure(TransportService.java:387)
+	at org.elasticsearch.common.util.concurrent.AbstractRunnable.run(AbstractRunnable.java:39)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[2019-01-21 07:12:39,180][INFO ][cluster.routing.allocation] [Arsenal] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][4], [haystack][4]] ...]).
+[2019-01-21 07:16:47,205][INFO ][cluster.metadata         ] [Arsenal] [haystack] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2019-01-21 07:16:47,473][INFO ][cluster.metadata         ] [Arsenal] [haystack] create_mapping [modelresult]
+[2019-01-21 07:16:48,160][INFO ][cluster.routing.allocation] [Arsenal] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[haystack][4]] ...]).
+[2019-01-21 14:04:34,203][INFO ][node                     ] [Arsenal] stopping ...
+[2019-01-21 14:04:34,753][INFO ][node                     ] [Arsenal] stopped
+[2019-01-21 14:04:34,754][INFO ][node                     ] [Arsenal] closing ...
+[2019-01-21 14:04:34,870][INFO ][node                     ] [Arsenal] closed

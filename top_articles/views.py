@@ -1,15 +1,19 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
+from django.http import JsonResponse
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Story
-from .serializers import *
+from top_articles.models import Story
+from top_articles.serializers import StorySerializer, StoryIndexSerializer
+
+# haystack imports
+from drf_haystack.viewsets import HaystackViewSet
+from haystack.query import SearchQuerySet
+
 
 # Create your views here.
-
-
-@api_view(['GET', ])
+@api_view(['GET',])
 def stories_list(request):
     """
     List  top stories.
@@ -43,3 +47,21 @@ def stories_list(request):
                 'prevlink': '/api/stories/?page=' + str(previousPage)
             }
         )
+
+def autocomplete(request):
+    print(request.GET.get('query'))
+    sqs = SearchQuerySet().autocomplete(
+        content_auto=request.GET.get(
+            'query',
+            ''))[
+        :5]
+    s = []
+    for result in sqs:
+        d = {"value": result.title, "data": result.object.url}
+        s.append(d)
+    output = {'suggestions': s}
+    return JsonResponse(output)
+
+class StorySearchView(HaystackViewSet):
+    index_models=[Story]
+    serializer_class=StoryIndexSerializer

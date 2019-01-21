@@ -14,11 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf.urls import url, include
+
 from top_articles import views
-from django.conf.urls import url
+from top_articles.views import StorySearchView, autocomplete
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register("stories/search", StorySearchView, base_name="story-search")
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
     url(r'^api/stories/$', views.stories_list),
+    url(r'^search/autocomplete/$', autocomplete),
+    url(r'^search/', include('haystack.urls')),
 ]
