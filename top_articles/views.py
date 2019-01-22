@@ -5,12 +5,7 @@ from django.http import JsonResponse
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from top_articles.models import Story
-from top_articles.serializers import StorySerializer, StoryIndexSerializer
-
-# haystack imports
-from drf_haystack.viewsets import HaystackViewSet
-from haystack.query import SearchQuerySet
-
+from top_articles.serializers import StorySerializer
 
 # Create your views here.
 @api_view(['GET',])
@@ -23,11 +18,12 @@ def stories_list(request):
         nextPage = 1
         previousPage = 1
         story = Story.objects.all().order_by('order_no')
-        print([st.order_no for st in story])
+        print("length",len(story))
         page = request.GET.get('page', 1)
-        paginator = Paginator(story, 30)
+        print("page", page)
+        paginator = Paginator(story, 20)
         try:
-            data = paginator.page(story)
+            data = paginator.page(page)
         except PageNotAnInteger:
             data = paginator.page(1)
         except EmptyPage:
@@ -36,6 +32,10 @@ def stories_list(request):
             nextPage = data.next_page_number()
         if data.has_previous():
             previousPage = data.previous_page_number()
+        if data.start_index():
+            start_index = data.start_index()
+        if data.end_index():
+            end_index = data.end_index()
         serializer = StorySerializer(
             data, context={'request': request}, many=True)
         return Response(
@@ -43,25 +43,10 @@ def stories_list(request):
                 'data': serializer.data,
                 'count': paginator.count,
                 'numpages': paginator.num_pages,
+                'startIndex': start_index,
+                'endIndex': end_index,
                 'nextlink': '/api/stories/?page=' + str(nextPage),
                 'prevlink': '/api/stories/?page=' + str(previousPage)
             }
         )
 
-def autocomplete(request):
-    print(request.GET.get('query'))
-    sqs = SearchQuerySet().autocomplete(
-        content_auto=request.GET.get(
-            'query',
-            ''))[
-        :5]
-    s = []
-    for result in sqs:
-        d = {"value": result.title, "data": result.object.url}
-        s.append(d)
-    output = {'suggestions': s}
-    return JsonResponse(output)
-
-class StorySearchView(HaystackViewSet):
-    index_models=[Story]
-    serializer_class=StoryIndexSerializer

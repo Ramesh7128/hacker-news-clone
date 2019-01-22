@@ -17,12 +17,6 @@ from django.contrib import admin
 from django.conf.urls import url, include
 
 from top_articles import views
-from top_articles.views import StorySearchView, autocomplete
-from rest_framework import routers
-
-router = routers.DefaultRouter()
-router.register("stories/search", StorySearchView, base_name="story-search")
-
 
 urlpatterns = [
     url('admin/', admin.site.urls),
