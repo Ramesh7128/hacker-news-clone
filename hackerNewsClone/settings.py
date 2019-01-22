@@ -50,17 +50,6 @@ INSTALLED_APPS = [
     'top_articles',
 ]
 
-# # haystack settings
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
-
-HAYSTACK_CONNECTIONS = {
- 'default': {   
-   'ENGINE':'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-   'URL': 'http://127.0.0.1:9200/',
-   'INDEX_NAME': 'haystack',
-  },
-}
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
