@@ -27,6 +27,4 @@ router.register("stories/search", StorySearchView, base_name="story-search")
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^api/stories/$', views.stories_list),
-    url(r'^search/autocomplete/$', autocomplete),
-    url(r'^search/', include('haystack.urls')),
 ]

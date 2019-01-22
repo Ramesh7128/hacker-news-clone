@@ -32,12 +32,12 @@ def stories_list(request):
             data = paginator.page(1)
         except EmptyPage:
             data = paginator.page(paginator.num_pages)
-        serializer = StorySerializer(
-            data, context={'request': request}, many=True)
         if data.has_next():
             nextPage = data.next_page_number()
         if data.has_previous():
             previousPage = data.previous_page_number()
+        serializer = StorySerializer(
+            data, context={'request': request}, many=True)
         return Response(
             {
                 'data': serializer.data,
