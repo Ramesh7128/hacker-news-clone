@@ -20,5 +20,5 @@ from top_articles import views
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'^api/stories/$', views.stories_list),
+    url(r'^api/stories/$', views.stories_list, name='get_all_stories'),
 ]
