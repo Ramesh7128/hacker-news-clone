@@ -22,6 +22,8 @@ def stories_list(request):
         page = request.GET.get('page', 1)
         print("page", page)
         paginator = Paginator(story, 20)
+        startIndex = 0
+        endIndex = 0
         try:
             data = paginator.page(page)
         except PageNotAnInteger:
