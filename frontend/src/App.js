@@ -41,6 +41,7 @@ class App extends Component {
 
   fetchArticles(url='/api/stories/') {
     let base_url = window.location.origin;
+    // let base_url = 'http://127.0.0.1:8000';
     url = base_url + url;
     console.log(url);
     console.log(url);

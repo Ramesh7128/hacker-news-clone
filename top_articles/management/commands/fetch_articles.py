@@ -28,6 +28,18 @@ class Command(BaseCommand):
                         link=article['url']
                     )
                 except IntegrityError:
+                    story = Story.objects.get(order_no=index)
+                    story.order_no = None
+                    story.save()
+                    Story.objects.create(
+                        id=article['id'],
+                        title=article['title'],
+                        author=article['by'],
+                        score=article['score'],
+                        order_no=index,
+                        timestamp=article['time'],
+                        link=article['url']
+                    )
                     logger.error("Intergrity error for id:{0}".format(id))
                 except KeyError:
                     logger.error("Key error for id:{0}".format(id))

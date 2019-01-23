@@ -11,6 +11,9 @@ class Story extends Component {
         } else {
             concatLink = link;
         }
+        let passedSeconds = Math.floor(Date.now() / 1000) - this.props.article.timestamp;
+        let hours = Math.floor(passedSeconds/3600);
+        let minutes = Math.floor((passedSeconds%3600)/60);
         return (
             <div className='story-box'>
                 <div className='list-numbering story-item'>
@@ -25,7 +28,7 @@ class Story extends Component {
                                 {this.props.article.title}
                             </div>
                             <div className='title-author'>
-                                {this.props.article.author} - ({concatLink})
+                                {this.props.article.author} - {hours?hours + " hours":minutes + " minutes"} - ({concatLink})
                             </div>
                         </div>
                     </a>
