@@ -68,7 +68,9 @@ Make sure you have node and npm isntalled.
 Open an other terminal and cd into the frontend directory inside the project root directory.
 
 #### Install dependencies and start the server.
+
 npm install
+
 npm start
 
 open browser and fire localhost:3000 to see your react-app running and consuming the backends api from the django development server.
