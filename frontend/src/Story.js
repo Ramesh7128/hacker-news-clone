@@ -28,7 +28,7 @@ class Story extends Component {
                                 {this.props.article.title}
                             </div>
                             <div className='title-author'>
-                                {this.props.article.author} - {hours?hours + " hours":minutes + " minutes"} - ({concatLink})
+                                {this.props.article.author} - {hours?hours + " hours ago":minutes + " minutes ago"} - ({concatLink})
                             </div>
                         </div>
                     </a>
