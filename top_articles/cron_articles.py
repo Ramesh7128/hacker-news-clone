@@ -15,14 +15,14 @@ def check_db_story_ids(articlesID_list):
     return new_articleID_list
 
 
-def get_article_urls():
+def get_article_urls(url):
     """
     Fetch all ids of top trending articles
     args: None
     return:None
     """
     articlesID_list = requests.get(
-        'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty').json()
+        url).json()
     url_list = []
     print("article length",len(articlesID_list))
     newarticlesID_list = check_db_story_ids(articlesID_list)
@@ -51,8 +51,8 @@ def fetch_articles(urls):
     else:
         return None
 
-def main():
-    urls_list, articlesID_list, newarticlesID_list = get_article_urls()
+def main(url):
+    urls_list, articlesID_list, newarticlesID_list = get_article_urls(url)
     print(urls_list, articlesID_list, newarticlesID_list)
     result_dict = fetch_articles(urls_list)
     return result_dict, articlesID_list, newarticlesID_list

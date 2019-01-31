@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Sentiment from './Sentiment'
-import thumbsUp from './img/thumbsup.svg'
+import thumbsUp from '../img/thumbsup.svg'
 
 class Story extends Component {
     render() {

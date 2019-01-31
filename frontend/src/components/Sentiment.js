@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import sad from './img/sad.svg';
-import meh from './img/confused.svg';
-import happy from './img/happy.svg';
+import sad from '../img/sad.svg';
+import meh from '../img/confused.svg';
+import happy from '../img/happy.svg';
 
 
 class Sentiment extends Component {

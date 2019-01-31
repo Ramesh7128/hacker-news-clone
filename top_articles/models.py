@@ -10,15 +10,13 @@ class Story(models.Model):
     score = models.IntegerField(default=0)
     link = models.URLField()
     timestamp = models.IntegerField()
-    order_no = models.IntegerField(null=True, unique=True)
+    top_order_no = models.IntegerField(null=True, unique=True)
     sentiment_score = models.FloatField(blank=True)
+    new_order_no = models.IntegerField(null=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.title
-
-    # def calculate_sentiment(self, title):
-    #     return 0
 
     def save(self, *args, **kwargs):
         print("function called")
@@ -28,8 +26,11 @@ class Story(models.Model):
     class Meta:
         verbose_name_plural = "stories"
 
-    
-    
+
+class Category(models.Model):
+    category = models.CharField(max_length=50, unique=True)
+    story = models.ManyToManyField('Story', related_name='categories',blank=True, null=True)
+
 
     
     
