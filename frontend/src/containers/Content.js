@@ -4,8 +4,24 @@ import { connect } from 'react-redux';
 import { fetchArticles } from '../actions/articlesActions';
 
 class Content extends Component {
+    constructor(props) {
+        super(props);
+    }
     componentDidMount() {
-        this.props.dispatch(fetchArticles('/api/topstories/'));
+        console.log(this.props);
+        if ('match' in this.props) {
+            if ('id' in this.props.match.params) {
+                if (this.props.match.params.id === "toparticles") {
+                    this.props.dispatch(fetchArticles('/api/topstories/'));
+                } else if (this.props.match.params.id === "newarticles") {
+                    this.props.dispatch(fetchArticles('/api/newstories/'));
+                }
+            } else {
+                this.props.dispatch(fetchArticles('/api/topstories/'));    
+            }
+        } else {
+            this.props.dispatch(fetchArticles('/api/topstories/'));
+        }
     }
     render() {
         if (this.props.searchArticles.length) {

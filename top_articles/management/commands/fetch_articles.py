@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     help = "Runs the cron script to update the articles"
-
     def article_update(self, url, category_type):
         top_articles, articlesId_list, newarticlesID_list = cron_articles.main(
             url)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchArticles } from '../actions/articlesActions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
 
@@ -8,8 +9,14 @@ class Header extends Component {
         return (
             <div className='header-section'>
                 <div onClick={this.props.onClick} className='logo-box'>Y</div>
-                <div className='top-articles' onClick={this.props.onClickTop}><span role="img" aria-label="top">🔥</span> Top Posts</div>
-                <div className='top-articles' onClick={this.props.onClickNew}><span role="img" aria-label="top">🔥</span> New Posts</div>
+                <div className='top-articles' onClick={this.props.onClickTop}>
+                    <span role="img" aria-label="top">🔥</span>
+                    <Link to="/toparticles">Top Posts</Link>
+                </div>
+                <div className='top-articles' onClick={this.props.onClickNew}>
+                    <span role="img" aria-label="top">🔥</span>
+                    <Link to="/newarticles">New Posts</Link>
+                </div>
             </div>
         )
     }
