@@ -20,6 +20,7 @@ from top_articles import views
 
 urlpatterns = [
     url('admin/', admin.site.urls),
+    url(r'^api/articles_search/', views.articles_search),
     url(r'^api/topstories/$', views.top_stories_list, name='get_all_stories'),
     url(r'^api/newstories/$', views.new_stories_list, name='get_all_new_stories'),
 ]

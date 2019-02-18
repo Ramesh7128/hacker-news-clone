@@ -6,9 +6,12 @@ from django.http import JsonResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from top_articles.models import Story
 from top_articles.serializers import StorySerializer
+from top_articles.search import StoryIndex
 
 # Create your views here.
-@api_view(['GET',])
+
+
+@api_view(['GET', ])
 def top_stories_list(request):
     """
     List top stories.
@@ -17,8 +20,9 @@ def top_stories_list(request):
         data = []
         nextPage = 1
         previousPage = 1
-        story = Story.objects.filter(categories__category='top').order_by('top_order_no')
-        print("length",len(story))
+        story = Story.objects.filter(
+            categories__category='top').order_by('top_order_no')
+        print("length", len(story))
         page = request.GET.get('page', 1)
         print("page", page)
         paginator = Paginator(story, 20)
@@ -53,7 +57,7 @@ def top_stories_list(request):
         )
 
 
-@api_view(['GET',])
+@api_view(['GET', ])
 def new_stories_list(request):
     """
     List new stories.
@@ -62,8 +66,9 @@ def new_stories_list(request):
         data = []
         nextPage = 1
         previousPage = 1
-        story = Story.objects.filter(categories__category='new').order_by('new_order_no')
-        print("length",len(story))
+        story = Story.objects.filter(
+            categories__category='new').order_by('new_order_no')
+        print("length", len(story))
         page = request.GET.get('page', 1)
         print("page", page)
         paginator = Paginator(story, 20)
@@ -97,3 +102,26 @@ def new_stories_list(request):
             }
         )
 
+
+@api_view(['GET', ])
+def articles_search(request):
+    """
+    search stories from elastic search.
+    """
+    if request.method == 'GET':
+        query = request.GET['q']
+        print(query)
+        ids = []
+        if query:
+            try:
+                story = StoryIndex.search()
+                print(query)
+                story = story.query('match', title=query)
+                response = story.execute()
+                response_dict = response['hits']['hits']
+                response_dict = [x['_source'] for x in response_dict]
+                serializer = StorySerializer(
+                    response_dict, context={'request': request}, many=True)
+                return Response(serializer.data)
+            except Exception as error:
+                print(error)

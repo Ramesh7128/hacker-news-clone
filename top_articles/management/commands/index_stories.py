@@ -12,9 +12,12 @@ class Command(BaseCommand):
     help = 'indexes stories from hackernews'
 
     def handle(self, *args, **kwargs):
-        es = Elasticsearch()
-        es.indices.close(index="story-index")
-        es.indices.delete(index='story-index')
+        try:
+            es = Elasticsearch()
+            es.indices.close(index="story-index")
+            es.indices.delete(index='story-index')
+        except Exception as error:
+            pass
         StoryIndex.init(index='story-index')
         bulk(client=es, actions=(b.indexing()
                                  for b in models.Story.objects.all().iterator()))

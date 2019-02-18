@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import search from './img/search.svg';
+// import search from './img/search.svg';
 import FuzzyPicker from 'react-fuzzy-picker';
 
 class Search extends Component {
@@ -46,7 +46,7 @@ class Search extends Component {
                     onChange={this.handleSelect}
                     items={list}
                 />
-                <img className='search-icon' onClick={this.toggleOpen} src={search} alt='search icon'></img>
+                {/* <img className='search-icon' onClick={this.toggleOpen} src={search} alt='search icon'></img> */}
             </div>
         )
     }

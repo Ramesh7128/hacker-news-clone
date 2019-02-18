@@ -29,6 +29,7 @@ class Story(models.Model):
     def indexing(self):
         obj = search.StoryIndex(
             meta={'id': self.id},
+            id=self.id,
             title=self.title,
             author=self.author,
             score=self.score,
