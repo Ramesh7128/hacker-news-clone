@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Story from '../components/Story';
 import { connect } from 'react-redux';
-import { fetchArticles } from '../actions/articlesActions';
+import { fetchArticles, fetchSearchArticles } from '../actions/articlesActions';
 
 class Content extends Component {
     constructor(props) {
@@ -24,20 +24,20 @@ class Content extends Component {
         }
     }
     render() {
-        if (this.props.searchArticles.length) {
-            if (this.props.fetching) {
-                return <div className='content-section'>Loading...</div>
-            } else {
-                return (
-                    <div className='content-section'>
-                        {this.props.searchArticles.map((article, idx) => (
-                            <Story startIndex={1} key={article.id} article={article} idx={idx} />
-                        ))}
-                    </div>
-                )
-            }
-        } else {
-            if (this.props.fetching) {
+        // if (this.props.searchArticles.length) {
+        //     if (this.props.fetching) {
+        //         return <div className='content-section'>Loading...</div>
+        //     } else {
+        //         return (
+        //             <div className='content-section'>
+        //                 {this.props.searchArticles.map((article, idx) => (
+        //                     <Story startIndex={1} key={article.id} article={article} idx={idx} />
+        //                 ))}
+        //             </div>
+        //         )
+        //     }
+        // } else {
+            if (!this.props.fetched) {
                 return <div className='content-section'>Loading...</div>
             } else {
                 if (this.props.error) {
@@ -52,7 +52,7 @@ class Content extends Component {
                     )
                 }
             }
-        }
+        // }
     }
 }
 

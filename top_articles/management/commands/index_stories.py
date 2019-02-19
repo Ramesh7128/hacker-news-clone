@@ -15,7 +15,7 @@ class Command(BaseCommand):
         try:
             es = Elasticsearch()
             es.indices.close(index="story-index")
-            es.indices.delete(index='story-index')
+            es.indices.delete(index="story-index")
         except Exception as error:
             pass
         StoryIndex.init(index='story-index')

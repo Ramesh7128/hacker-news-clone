@@ -9,7 +9,7 @@ my_analyzer = analyzer('my_analyzer',
                        tokenizer='standard',
                        filter=['lowercase', token_filter(
                            'edge_ngram_filter', type='edgeNGram',
-                           min_gram=3, max_gram=20
+                           min_gram=1, max_gram=20
                        )]
                        )
 
@@ -25,11 +25,3 @@ class StoryIndex(DocType):
     timestamp = Text()
     created_at = Date()
     sentiment_score = Float()
-
-
-# def bulk_indexing():
-#     StoryIndex.init(index='story-index')
-#     es = Elasticsearch()
-#     es.indices.delete(index='story-index')
-#     bulk(client=es, actions=(b.indexing()
-#                              for b in models.Story.objects.all().iterator()))

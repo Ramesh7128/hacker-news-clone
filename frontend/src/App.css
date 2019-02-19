@@ -8,6 +8,13 @@ html, body {
   background: #f8f6f6;
 }
 
+a {
+  color: #FF5200;
+}
+a:hover {
+   color: black;
+}
+
 #root {
   height: 100%;
 }
@@ -45,7 +52,7 @@ html, body {
   width: 120px;
   height: 28px;
   margin-left: 10px;
-  background: black;
+  background: white;
   color: white;
   border-radius: 10px;
   display: flex;
@@ -205,42 +212,31 @@ a {
   height: 70px;
   display: flex;
   justify-content: center;
+  align-items: center;
   background: #FF5200 linear-gradient(#FF5200, #ff5204);
 }
 
-.search-icon {
-  padding-left: 10px;
-  align-self: center;
-  width: 30px;
+.input-box {
+  width: 180px;
   height: 30px;
+  border-radius: 5px;
+  border: 2px solid #DDD;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  color: #FFF;
+  text-align: center;
+  background-color: #FF5200;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.fuzzy-picker-background {
-  background: rgba(0, 0, 0, 0.2);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* height: 100%; */
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 300px;
-  padding-top: 25vh;
-  z-index: 100;
+.input-box::placeholder {
+  color: #FFF;
 }
 
-.fuzzy-picker-background .fuzzy-picker {
-  max-width: 400px;
-  background: #FFF;
-  border: 1px solid #DDD;
-  border-radius: 4px;
-  box-shadow: 0px 0px 16px #333;
-  font-size: 1rem;
-  display: flex;
-  flex-direction: column;
+.input-box:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.5);
 }
+
 
 .fuzzy-picker-background .fuzzy-picker .fuzzy-picker-top-text {
   color: #AAA;

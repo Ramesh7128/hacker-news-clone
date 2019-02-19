@@ -117,11 +117,17 @@ def articles_search(request):
                 story = StoryIndex.search()
                 print(query)
                 story = story.query('match', title=query)
+                story =  story[:100]
                 response = story.execute()
                 response_dict = response['hits']['hits']
+                print(len(response_dict))
                 response_dict = [x['_source'] for x in response_dict]
                 serializer = StorySerializer(
                     response_dict, context={'request': request}, many=True)
-                return Response(serializer.data)
+                return Response(
+                    {
+                        'data': serializer.data,
+                    }
+                )
             except Exception as error:
                 print(error)
