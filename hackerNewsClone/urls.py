@@ -14,13 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import url, include
+from django.urls import path, include
+# from django.conf.urls import url, include
+
 
 from top_articles import views
 
 urlpatterns = [
-    url('admin/', admin.site.urls),
-    url(r'^api/articles_search/', views.articles_search),
-    url(r'^api/topstories/$', views.top_stories_list, name='get_all_stories'),
-    url(r'^api/newstories/$', views.new_stories_list, name='get_all_new_stories'),
+    path('admin/', admin.site.urls),
+    path('api/', include('top_articles.urls', namespace='toparticles')),
+    path(r'social/(?P<backend>[^/]+)/$', views.exchange_token),
 ]

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Story from '../components/Story';
 import { connect } from 'react-redux';
 import { fetchArticles, fetchSearchArticles } from '../actions/articlesActions';
+import Footer from './Footer';
 
 class Content extends Component {
     constructor(props) {
@@ -12,31 +13,18 @@ class Content extends Component {
         if ('match' in this.props) {
             if ('id' in this.props.match.params) {
                 if (this.props.match.params.id === "toparticles") {
-                    this.props.dispatch(fetchArticles('/api/topstories/'));
+                    this.props.dispatch(fetchArticles('/api/topstories/', this.props.user));
                 } else if (this.props.match.params.id === "newarticles") {
-                    this.props.dispatch(fetchArticles('/api/newstories/'));
+                    this.props.dispatch(fetchArticles('/api/newstories/', this.props.user));
                 }
             } else {
-                this.props.dispatch(fetchArticles('/api/topstories/'));    
+                this.props.dispatch(fetchArticles('/api/topstories/', this.props.user));    
             }
         } else {
-            this.props.dispatch(fetchArticles('/api/topstories/'));
+            this.props.dispatch(fetchArticles('/api/topstories/', this.props.user));
         }
     }
     render() {
-        // if (this.props.searchArticles.length) {
-        //     if (this.props.fetching) {
-        //         return <div className='content-section'>Loading...</div>
-        //     } else {
-        //         return (
-        //             <div className='content-section'>
-        //                 {this.props.searchArticles.map((article, idx) => (
-        //                     <Story startIndex={1} key={article.id} article={article} idx={idx} />
-        //                 ))}
-        //             </div>
-        //         )
-        //     }
-        // } else {
             if (!this.props.fetched) {
                 return <div className='content-section'>Loading...</div>
             } else {
@@ -46,8 +34,9 @@ class Content extends Component {
                     return (
                         <div className='content-section'>
                             {this.props.articles.map((article, idx) => (
-                                <Story startIndex={this.props.startIndex} key={article.id} article={article} idx={idx} />
+                                <Story startIndex={this.props.startIndex} articleID={article.id} key={article.id} article={article} idx={idx} />
                             ))}
+                            <Footer />
                         </div>
                     )
                 }
@@ -64,7 +53,9 @@ const mapStateToProps = (state) => ({
     startIndex: state.startIndex,
     fetching: state.fetching,
     fetched: state.fetched,
-    error: state.error
+    error: state.error,
+    token: state.user,
+    reRender: state.reRender,
 });
 
 Content = connect(mapStateToProps)(Content);

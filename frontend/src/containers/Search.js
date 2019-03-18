@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import search from './img/search.svg';
 import { fetchArticles, fetchSearchArticles } from '../actions/articlesActions';
+import google from '../img/google.png'
 
 class Search extends Component {
     constructor(props) {
         super(props);
-        // this.handleInputText = this.handleInputText.bind(this);
     }
 
     handleInputText(event) {
         console.log(event.target.value)
-        
+
     }
     handleItemMapping() {
     }
@@ -27,7 +27,7 @@ class Search extends Component {
         return (
             <div className='search-section'>
                 <span className="input-section">
-                    <input className='input-box' type="text" onChange={(event) => this.props.onChange(event.target.value)} placeholder="Search" />
+                    <input className='input-box' type="text" onChange={(event) => this.props.onChange(event.target.value, this.props.token)} placeholder="Search" />
                 </span>
             </div>
         )
@@ -36,16 +36,20 @@ class Search extends Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onChange: (query) => {
+        onChange: (query, token) => {
             console.log(query);
             if (query) {
-                dispatch(fetchSearchArticles(query));
+                dispatch(fetchSearchArticles(query, token));
             } else {
-                dispatch(fetchArticles('/api/topstories/'));
+                dispatch(fetchArticles('/api/topstories/', token));
             }
         }
     }
 }
 
-Search = connect(null, mapDispatchToProps)(Search);
+const mapStateToProps = (state) => ({
+    token: state.user,
+});
+
+Search = connect(mapStateToProps, mapDispatchToProps)(Search);
 export default Search

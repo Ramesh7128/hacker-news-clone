@@ -27,13 +27,27 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '705813183307-hminde5i1ejhm790gl6t2ct0j6n7vft0.apps.googleusercontent.com'  # Paste CLient Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'NCxFWXMsV4fgU36zmuh0fk1N'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['email', 'profile']
+
+# config per http://psa.matiasaguirre.net/docs/configuration/django.html#django-admin
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
+
+# If this is not set, PSA constructs a plausible username from the first portion of the
+# user email, plus some random disambiguation characters if necessary.
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+
+AUTH_USER_MODEL = 'top_articles.User'
+
 
 # cors settings
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
-       'http://localhost:3000',
-       'http://127.0.0.1:3000'
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
 )
 
 # Application definition
@@ -47,9 +61,36 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'haystack',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
+    'social_django',
     'top_articles',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'top_articles.backends.JWTAuthentication',
+    ),
+    'EXCEPTION_HANDLER': 'top_articles.exceptions.core_exception_handler',
+    'NON_FIELD_ERRORS_KEY': 'error'
+}
+
+SOCIAL_AUTH_PIPELINE = (
+    'social_core.pipeline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.social_auth.associate_by_email',  # <- this line not included by default
+    'social_core.pipeline.user.create_user',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+)
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -61,6 +102,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 ROOT_URLCONF = 'hackerNewsClone.urls'
 

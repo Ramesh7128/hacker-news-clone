@@ -6,9 +6,12 @@ import { connect } from 'react-redux';
 
 class Footer extends Component {
     render() {
+        console.log(this.props.token);
         return (
-            <div className='footer-section'>
-                <img onClick={() => this.props.onClick(this.props.nextLink)} src={arrow} alt="" />
+            <div className='pagination'>
+                { this.props.nextLink && 
+                    <img onClick={() => this.props.onClick(this.props.nextLink)} src={arrow} alt="" />
+                }
             </div>
         )
     }
@@ -21,7 +24,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 const mapStateToProps = (state) => ({
-    nextLink: state.nextLink
+    nextLink: state.nextLink,
+    token: state.user
 })
 
 Footer = connect(mapStateToProps, mapDispatchToProps)(Footer);
