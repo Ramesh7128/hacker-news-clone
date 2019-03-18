@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 import { authSignUp, authLogout } from '../actions/articlesActions';
 import { connect } from 'react-redux';

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import * as constURL from './constants'; 
+
 
 export const FETCH_STORIES_BEGIN = 'FETCH_STORIES_BEGIN';
 export const FETCH_STORIES_SUCCESS = 'FETCH_STORIES_SUCCESS';
@@ -16,11 +18,9 @@ export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
 
 
-export function fetchArticles(url = '/api/stories/') {
-    // let base_url = window.location.origin;
+export function fetchArticles(url='/api/topstories/') {
     let token = localStorage.getItem('token', '');
-    let base_url = 'http://127.0.0.1:8000';
-    url = base_url + url;
+    url = constURL.baseUrl + url;
     return function (dispatch) {
         dispatch({ type: FETCH_STORIES_BEGIN });
         axios.get(url, token && { headers: { Authorization: `Token ${token}` } })
@@ -34,10 +34,9 @@ export function fetchArticles(url = '/api/stories/') {
     }
 }
 
-export function fetchSearchArticles(query = '', token = '') {
+export function fetchSearchArticles(query='', token='') {
     // let base_url = window.location.origin
-    let base_url = 'http://127.0.0.1:8000';
-    let url = base_url + '/api/articles_search/?q=' + query
+    let url = constURL + '/api/articles_search/?q=' + query
     return function (dispatch) {
         dispatch({ type: FETCH_SEARCH_STORIES_BEGIN });
         axios.get(url, { headers: { Authorization: `Token ${token}` } })
@@ -81,7 +80,7 @@ export const authLogout = () => {
 export const authLogin = (email, password) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post('http://127.0.0.1:8000/api/users/login', {
+        axios.post(constURL.authLoginURL, {
             "user": {
                 "email": email,
                 "password": password
@@ -103,7 +102,7 @@ export const authLogin = (email, password) => {
 export const authSignUp = (email, username, password) => {
     return dispatch => {
         dispatch(authStart());
-        axios.post('http://127.0.0.1:8000/api/users/', {
+        axios.post(constURL.authSignUPURL, {
             "user": {
                 "email": email,
                 "username": username,
@@ -131,7 +130,7 @@ export const tokenAuthentication = () => {
         if (token == undefined) {
             dispatch(authLogout());
         } else {
-            axios.get('http://127.0.0.1:8000/api/user', { headers: { Authorization: `Token ${token}` } })
+            axios.get(constURL.tokenAuthenticationURL, { headers: { Authorization: `Token ${token}` } })
                 .then(res => {
                     if (res.status == 200) {
                         console.log(res.data);
@@ -148,11 +147,11 @@ export const tokenAuthentication = () => {
 
 
 export const starArticles = (articleID) => {
-    const token = localStorage.getItem('token');
+    let token = localStorage.getItem('token');
     if (token == undefined) {
         token = ''
     }
-    axios.post('http://127.0.0.1:8000/api/starred', {
+    axios.post(constURL.starredArticlesURL, {
         'articleID': articleID
     }, { headers: { Authorization: `Token ${token}` } });
 }

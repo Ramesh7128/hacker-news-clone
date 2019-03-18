@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchArticles, fetchSearchArticles } from '../actions/articlesActions';
-import GLogin from './GLogin';
+// import GLogin from './GLogin';
 import Login from './Login';
 
 class Nav extends Component {

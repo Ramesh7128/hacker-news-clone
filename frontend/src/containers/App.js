@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import '../App.css';
 import Header from './Header';
 import Content from './Content';
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Nav from "./Nav";
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';

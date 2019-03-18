@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Sentiment from './Sentiment';
+import Sentiment from '../components/Sentiment';
 import thumbsUp from '../img/thumbsup.svg';
 import { starArticles } from '../actions/articlesActions';
 

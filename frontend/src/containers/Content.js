@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Story from '../components/Story';
+import Story from './Story';
 import { connect } from 'react-redux';
-import { fetchArticles, fetchSearchArticles } from '../actions/articlesActions';
+import { fetchArticles } from '../actions/articlesActions';
 import Footer from './Footer';
 
 class Content extends Component {

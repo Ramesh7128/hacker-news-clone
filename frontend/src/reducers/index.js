@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 import {
     FETCH_STORIES_BEGIN,
     FETCH_STORIES_SUCCESS,
@@ -13,10 +11,6 @@ import {
     AUTH_FAIL,
     AUTH_LOGOUT,
 } from '../actions/articlesActions';
-
-const token = localStorage.getItem('token');
-const imgUrl = localStorage.getItem('imgUrl');
-const fullName = localStorage.getItem('fullName');
 
 const initialState = {
     token: null,
