@@ -16,7 +16,9 @@ class Content extends Component {
                     this.props.dispatch(fetchArticles('/api/topstories/', this.props.user));
                 } else if (this.props.match.params.id === "newarticles") {
                     this.props.dispatch(fetchArticles('/api/newstories/', this.props.user));
-                }
+                } else if (this.props.match.params.id === "starred") {
+                    this.props.dispatch(fetchArticles('/api/starred/', this.props.user));
+                } 
             } else {
                 this.props.dispatch(fetchArticles('/api/topstories/', this.props.user));    
             }

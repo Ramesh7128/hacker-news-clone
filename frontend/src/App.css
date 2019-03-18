@@ -17,9 +17,9 @@ a {
   color: #FF5200;
 }
 
-a:hover {
+/* a:hover {
   color: white;
-}
+} */
 
 #root {
   height: 100%;
@@ -196,6 +196,10 @@ a {
   grid-area: f;
   justify-self: center;
   align-self: center;
+}
+
+.footer-section:hover {
+  color: black;
 }
 
 .pagination {
