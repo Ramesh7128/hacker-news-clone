@@ -31,7 +31,7 @@ class App extends Component {
                         <Route path="/category/:id" component={Content} />
                     </Switch>
                     <div className='footer-section'>
-                        Made with <span>&#9829;</span> in altCAMPUS
+                        Made with <span>&#9829;</span> in <a href='https://altcampus.io/'>altCAMPUS</a>
                 </div>
                 </div>
             </Router>
